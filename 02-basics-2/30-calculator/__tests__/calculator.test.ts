@@ -34,6 +34,7 @@ describe('CalculatorApp', () => {
   })
 
   it('должно выводить результат 2 + 3 = 5', async () => {
+    console.log('firstOperand', firstOperand);
     await firstOperand.setValue('2')
     await secondOperand.setValue('3')
     await operators.sum.setValue(true)
@@ -44,6 +45,7 @@ describe('CalculatorApp', () => {
     await firstOperand.setValue('2')
     await secondOperand.setValue('3')
     await operators.subtract.setValue(true)
+    console.log('output', output.text());
     expect(output.text()).toBe('-1')
   })
 
