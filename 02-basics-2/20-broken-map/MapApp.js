@@ -1,4 +1,4 @@
-import { defineComponent, ref, computed } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'MapApp',
@@ -12,28 +12,28 @@ export default defineComponent({
      * Обработчик клика по карте для установки координат метки
      * @param {MouseEvent} event
      */
-    const handleClick = (event) => {
+    function handleClick(event) {
       x.value = event.offsetX
       y.value = event.offsetY
     }
 
+    // Для удобства вынесем вычисление стиля позиционирования в отдельное вычисляемое свойство
+    // Можно обойтись и без вычисляемого свойств, сразу прописывая стили в шаблоне
     const pinPositionStyle = computed(() => ({
       left: `${x.value}px`,
       top: `${y.value}px`,
     }))
 
-
     return {
-      handleClick,
       pinPositionStyle,
-      x,
-      y
+      handleClick,
     }
   },
 
   template: `
     <div class="map" @click="handleClick">
       <img class="map-image" src="./map.png" alt="Map" draggable="false" />
+      <!-- Стили должны определяться шаблоном через привязку -->
       <span class="pin" :style="pinPositionStyle">📍</span>
     </div>
   `,
