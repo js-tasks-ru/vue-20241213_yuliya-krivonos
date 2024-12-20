@@ -40,45 +40,42 @@ export default defineComponent({
       <h1 class="title">Погода в Средиземье</h1>
 
       <ul class="weather-list unstyled-list">
-        <template v-for="(item, index) in weatherData"
-        :key="index">
-        <li :class="['weather-card', { 'weather-card--night': isNight(item) }]">
+        <li class= 'weather-card' :class = "{ 'weather-card--night': isNight(item) }" v-for="(item, index) in weatherData" :key="index">
           <div class="weather-alert" v-if="checkAlert(item)">
             <span class="weather-alert__icon">⚠️</span>
-            <span class="weather-alert__description">{{ getAlertName(item) }} :  {{ getDescriptionAlert(item) }}</span>
+            <span class="weather-alert__description">{{ item.alert.sender_name }} :  {{ item.alert.description }}</span>
           </div>
           <div>
             <h2 class="weather-card__name">
-              {{item.geographic_name}}
+              {{ item.geographic_name }}
             </h2>
             <div class="weather-card__time">
-              {{getTime(item)}}
+              {{ getTime(item) }}
             </div>
           </div>
           <div class="weather-conditions">
             <div class="weather-conditions__icon" :title="getWeatherDescription(item)">{{ getWeatherIcon(item) }}</div>
-            <div class="weather-conditions__temp">{{getTemperature(item)}} °C</div>
+            <div class="weather-conditions__temp">{{ getTemperature(item) }} °C</div>
           </div>
           <div class="weather-details">
             <div class="weather-details__item">
               <div class="weather-details__item-label">Давление, мм рт. ст.</div>
-              <div class="weather-details__item-value">{{getPressure(item)}}</div>
+              <div class="weather-details__item-value">{{ getPressure(item) }}</div>
             </div>
             <div class="weather-details__item">
               <div class="weather-details__item-label">Влажность, %</div>
-              <div class="weather-details__item-value">{{item.current.humidity}}</div>
+              <div class="weather-details__item-value">{{ item.current.humidity }}</div>
             </div>
             <div class="weather-details__item">
               <div class="weather-details__item-label">Облачность, %</div>
-              <div class="weather-details__item-value">{{item.current.clouds}}</div>
+              <div class="weather-details__item-value">{{ item.current.clouds }}</div>
             </div>
             <div class="weather-details__item">
               <div class="weather-details__item-label">Ветер, м/с</div>
-              <div class="weather-details__item-value">{{item.current.wind_speed}}</div>
+              <div class="weather-details__item-value">{{ item.current.wind_speed }}</div>
             </div>
           </div>
         </li>
-        </template>
       </ul>
     </div>
   `,

@@ -7,7 +7,7 @@ const Component = defineComponent({
       dateTime: new Date().toLocaleDateString(navigator.language, { dateStyle: 'long' })
     }
   },
-  template: '<div>Сегодня {{dateTime}}</div>'
+  template: '<div>Сегодня {{ dateTime }}</div>'
 });
 const app = createApp(Component);
 
