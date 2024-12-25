@@ -11,14 +11,17 @@ export default defineComponent({
   props: {
     organizer: {
       type: String,
+      required: true
     },
 
     place: {
       type: String,
+      required: true
     },
 
     date: {
       type: Number,
+      required: true
     },
   },
 

@@ -19,15 +19,19 @@ export default defineComponent({
       options,
       meetupIndex,
       meetup,
+      meetups
     }
   },
 
   template: `
-    <div style="display: flex; justify-content: center; gap: 1em; padding: 1em 0;">
-      <UiRadioGroup v-model="meetupIndex" :options="options" />
-    </div>
-    <div class="page-meetup">
-      <MeetupView :meetup="meetup"/>
-    </div>
+    <template v-for="meetup in meetups">
+      <div style="display: flex; justify-content: center; gap: 1em; padding: 1em 0;">
+        <UiRadioGroup v-model="meetupIndex" :options="options" />
+      </div>
+      <div class="page-meetup">
+        <MeetupView
+          :meetup="meetup"/>
+      </div>
+    </template>
   `,
 })
