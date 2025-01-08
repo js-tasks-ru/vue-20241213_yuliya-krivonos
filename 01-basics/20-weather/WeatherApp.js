@@ -8,12 +8,6 @@ export default defineComponent({
       weatherData: getWeatherData(),
       checkAlert: (item) => {
         return Boolean(item.alert !== null);
-    },
-      getAlertName: (item) => {
-        return item.alert?.sender_name;
-      },
-      getDescriptionAlert: (item) => {
-        return item.alert?.description;
       },
       getTemperature: (item) => {
         return (item.current.temp - 273.15).toFixed(1);
