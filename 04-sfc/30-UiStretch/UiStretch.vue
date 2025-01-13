@@ -12,7 +12,7 @@
   height: 100%;
 }
 
-.stretch-container > img,
+:slotted(.stretch-container > img),
 .stretch-container > video,
 .stretch-container > picture {
   object-fit: scale-down;
